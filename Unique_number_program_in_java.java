@@ -1,18 +1,29 @@
 import java.util.Scanner;
 
-public class Unique_number_program_in_java 
-{
-    public static void main(String args[]) 
-    {
-        Scanner o = new Scanner(System.in);
+public class Unique_number_program_in_java {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter any number: ");
+        int number = scanner.nextInt();
+        scanner.close();
 
-        System.out.print("Enter the number = ");
-        int a = o.nextInt();
-        for (int i = 0; i < a; i++) 
-        {
-            
+        int[] visited = new int[10]; 
+        int temp = number;
+        boolean isUnique = true;
+        while (temp > 0 && isUnique) {
+            int digit = temp % 10;
+            if (visited[digit] == 1) {
+                isUnique = false;
+            } else {
+                visited[digit] = 1;
+            }
+            temp /= 10;
         }
-        o.close();
 
+        if (isUnique) {
+            System.out.println("This is a unique number.");
+        } else {
+            System.out.println("This is not a unique number.");
+        }
     }
 }
